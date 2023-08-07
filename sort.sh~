@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# List and sort directories
+echo -e "how do you want the list sorted?\nEnter 'a' for accending and 'd' for decending"
+read sort
+
+if [ $sort == "a" ] ; then
+    ls -1 $*
+elif [ $sort == "d" ]; then
+    ls -1r $*
+else
+    echo "please enter 'a' or 'd'"
+fi

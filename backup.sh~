@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# A simple backup program
+
+if [ $# -eq 0 ]; then
+    echo "Please enter a directory and destination backup directory"
+    exit 1
+fi
+Dir=$1
+Dest_Dir=`mkdir $2`
+
+for file in $Dir ; do
+    cp -r $file $Dest_Dir
+done
+
+echo "These are the all the files backed up"
+ls -1 $Dest_Dir

@@ -13,9 +13,22 @@ if [ ! -d "$Dest_Dir" ]; then
     mkdir "$Dest_Dir"
 fi
 
+echo -e "Is there any file you want to exclude in your backup?\nEnter yes or no "
+ls -1 $Dir
+read Skip
+if [ "$Skip" == "yes" ]; then
+    echo "Enter file name"
+    read Pass
+elif [ "$Skip" == "no" ]; then
+    echo "Okay"
+fi
 
 for file in "$Dir"/* ; do
-    cp -r "$file" "$Dest_Dir"
+    if [ "$(basename $file)" == "$Pass" ]; then
+	continue
+    else
+	cp -r "$file" "$Dest_Dir"
+    fi
 done
 
 echo "These are the all the files backed up:"
